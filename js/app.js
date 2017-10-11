@@ -1,5 +1,3 @@
-let trialCount = 0;
-
 $(function() {
     init();
 
@@ -16,9 +14,9 @@ $(function() {
     - reassign (append) shuffled list of cards into the 'deck' class.
 */
 function init() {
-    const cards = shuffle($('.deck li i'));
+    const cards = shuffle($('.card i'));
 
-    $('.deck li').removeClass("match open show");
+    $('.card').removeClass("match open show");
     $('.deck').empty();
 
     for (const card of cards) {
@@ -28,6 +26,8 @@ function init() {
 
         $('.deck').append(newCardWrapper);
     }
+    
+    $('.card').click(whenCardClicked);
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -45,6 +45,20 @@ function shuffle(array) {
     return array;
 }
 
+function whenCardClicked(event) {
+    $(this).addClass("open show");
+}
+
+var GameState = function(allowedMoves) {
+    this.allowedMoves = allowedMoves;
+
+    this.trialCount = 0;
+    this.selectedCards = [];
+}
+
+GameState.prototype.isGameOver = function() {
+    return this.trialCount === this.allowedMoves;
+}
 
 /*
  * set up the event listener for a card. If a card is clicked:
