@@ -1,14 +1,34 @@
-/*
- * Create a list that holds all of your cards
- */
+let trialCount = 0;
 
+$(function() {
+    init();
+
+    // when restart button is clicked, re-initialize the card list.
+    $('.restart').click(function() {
+        init();
+    });
+});
 
 /*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
+    Initialize array of cards in newly shuffled order.
+    - obtain current list of cards, and shuffle them
+    - remove current elements under the class 'deck' which holds the list of cards
+    - reassign (append) shuffled list of cards into the 'deck' class.
+*/
+function init() {
+    const cards = shuffle($('.deck li i'));
+
+    $('.deck li').removeClass("match open show");
+    $('.deck').empty();
+
+    for (const card of cards) {
+        let newCardWrapper = $('<li></li>');
+        newCardWrapper.addClass('card');
+        newCardWrapper.append(card);
+
+        $('.deck').append(newCardWrapper);
+    }
+}
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
