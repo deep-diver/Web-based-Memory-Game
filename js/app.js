@@ -1,3 +1,13 @@
+var GameState = function(maxMatching) {
+    this.maxMatching = maxMatching;
+
+    this.successCount = 0;
+    this.trialCount = 0;
+    this.selectedCards = [];
+}
+
+var gameState = new GameState(8);
+
 $(function() {
     init();
 
@@ -47,18 +57,34 @@ function shuffle(array) {
 
 function whenCardClicked(event) {
     $(this).addClass("open show");
+    gameState.selectedCards.push($(this).find(".fa"));
+
+    setTimeout(function(){
+        if (gameState.selectedCards.length == 2) {
+            gameState.trialCount += 1;
+
+            const firstCard = gameState.selectedCards.pop();
+            const secondCard = gameState.selectedCards.pop();
+    
+            const firstCardSymbol = firstCard.attr('class').split(" ")[1];
+            const secondCardSymbol = secondCard.attr('class').split(" ")[1];
+            // alert('first: ' + $(firstCard).attr('class').split(" ")[1] + ', second: ' + $(secondCard).attr('class').split(" ")[1]);
+    
+            firstCard.parent().removeClass("open show");
+            secondCard.parent().removeClass("open show");
+    
+            if (firstCardSymbol === secondCardSymbol) { 
+                firstCard.parent().addClass("match");
+                secondCard.parent().addClass("match");
+
+                if (gameState.successCount == gameState.maxMatching) {
+                    alert("Congratulation!!");
+                }
+            }
+        }
+    }, 1000);
 }
 
-var GameState = function(allowedMoves) {
-    this.allowedMoves = allowedMoves;
-
-    this.trialCount = 0;
-    this.selectedCards = [];
-}
-
-GameState.prototype.isGameOver = function() {
-    return this.trialCount === this.allowedMoves;
-}
 
 /*
  * set up the event listener for a card. If a card is clicked:
