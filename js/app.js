@@ -1,9 +1,23 @@
-var GameState = function(maxMatching) {
-    this.maxMatching = maxMatching;
+let FIRST_STAR_THRESHOLD = 5;
+let SECOND_STAR_THRESHOLD = 10;
+let MAX_MATCHING = 8;
 
+var GameState = function(maxMatching) {
     this.successCount = 0;
     this.trialCount = 0;
     this.selectedCards = [];
+}
+
+GameState.prototype.increaseMove = function() {
+    this.trialCount += 1;
+    $('.moves').text(this.trialCount);
+    
+    if (this.trialCount == FIRST_STAR_THRESHOLD) {
+        $('.fa-star:nth-child(0)').addClass('fa-star-o');
+    }
+    else if (this.trialCount == SECOND_STAR_THRESHOLD) {
+        $('.fa-star:nth-child(1)').addClass('fa-star-o');
+    }
 }
 
 var gameState = new GameState(8);
@@ -59,9 +73,13 @@ function whenCardClicked(event) {
     $(this).addClass("open show");
     gameState.selectedCards.push($(this).find(".fa"));
 
+    if (gameState.selectedCards.length == 2) {
+        $('.card').unbind("click", whenCardClicked);
+    }
+
     setTimeout(function(){
         if (gameState.selectedCards.length == 2) {
-            gameState.trialCount += 1;
+            gameState.increaseMove();
 
             const firstCard = gameState.selectedCards.pop();
             const secondCard = gameState.selectedCards.pop();
@@ -77,10 +95,12 @@ function whenCardClicked(event) {
                 firstCard.parent().addClass("match");
                 secondCard.parent().addClass("match");
 
-                if (gameState.successCount == gameState.maxMatching) {
+                if (gameState.successCount == MAX_MATCHING) {
                     alert("Congratulation!!");
                 }
             }
+            
+            $('.card').click(whenCardClicked);
         }
     }, 1000);
 }
