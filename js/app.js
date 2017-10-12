@@ -98,16 +98,27 @@ function init() {
     gameState.init();
 
     //re-assign second timer
+    $('.timer span').text("0 hr 0 min 0 sec");
+
     gameState.timeInterval = setInterval(function() {
         gameState.timeCount += 1;
+
+        let hour = parseInt(gameState.timeCount / 360);
+        let minute = parseInt((gameState.timeCount  % 360) / 60);
+        let second = parseInt((gameState.timeCount  % 360) % 60);
+
+        $('.timer span').text(hour + " hr " + minute + " min " + second + " sec");
     }, 1000);
 }
 
 // when a card is clicked.
 function whenCardClicked(event) {
+    // disable the currently interacting card to be clicked.
+    $(this).unbind("click", whenCardClicked);
+
     // open and show class to reveal the content of a card.
     $(this).addClass("open show");
-
+    
     // adding the open card to the list
     gameState.selectedCards.push($(this).find(".fa"));
 
@@ -157,8 +168,14 @@ function twoCardsMatched(firstCard, secondCard) {
 
     // showing modal if users got everything correct.
     if (gameState.successCount == MAX_MATCHING) {
+        clearInterval(gameState.timeInterval);
+
+        let hour = parseInt(gameState.timeCount / 360);
+        let minute = parseInt((gameState.timeCount  % 360) / 60);
+        let second = parseInt((gameState.timeCount  % 360) % 60);
+
         $(".modal").css('display', 'block');
-        $(".modal-body p").text("You finished with " + gameState.trialCount + " moves in " + gameState.timeCount + " seconds!");
+        $(".modal-body p").text("You finished with " + gameState.trialCount + " moves in \"" + hour + " hr " + minute + " min " + second + " sec\"");
     }
 }
 

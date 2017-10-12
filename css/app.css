@@ -86,26 +86,40 @@ h1 {
  */
 
 .score-panel {
-    text-align: left;
-    width: 345px;
+    text-align: center;
+    width: 660px;
     margin-bottom: 10px;
 }
 
-.score-panel .stars {
+.score-panel .stars-container {
+    width: 25%;
+    display: inline-block;
+}
+
+.score-panel .stars-container .stars {
+    width: 33%;
     margin: 0;
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
 }
 
-.score-panel .stars li {
+.score-panel .stars-container .stars li {
     list-style: none;
     display: inline-block;
 }
 
+.score-panel .timer {
+    width: 45%;
+    display: inline-block;
+    text-align: center;
+}
+
 .score-panel .restart {
-    float: right;
+    width: 20%;
     cursor: pointer;
+    display: inline-block;
+    text-align: right;
 }
 
 /* modal style from https://www.w3schools.com/howto/howto_css_modals.asp */

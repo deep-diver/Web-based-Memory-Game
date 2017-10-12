@@ -4,6 +4,8 @@
 
 * Overview
 * Functions
+* Dependencies
+* Resources
 
 ## Overview
 ![Program Capture](/capture.png)
@@ -13,7 +15,6 @@
 * This project is "Memory Game". When a card is clicked, it shows what symbol's in it. Users should select two cards by guessing their location. Memory Game can be completed when finding all pairs of the same symbols. 
 
 ## Functions
-
 * Shuffling Cards
   * when restart button is clicked, all cards are shuffled. 
 * Counting
@@ -24,3 +25,23 @@
 * After finished..
   * a modal dialogue pops up to ask if users want to play again
   * the modal gives score information 
+
+## Dependencies
+* jQuery is used to manipulate UI/DOM
+  * http://jquery.com
+* fontawesome is used to draw card images 
+  * each card image is softly imbeded with html class property
+  * http://fontawesome.io
+* font family is from google's font repo
+  * Coda font style is used in this project
+  * https://fonts.google.com/specimen/Coda
+
+## Resources
+* index.html
+  * main game page structure including modal dialogue
+* /css/app.css
+  * CSS stylesheet for index.html
+* /js/app.js
+  * Javascript to make index.html (game) being interactive
+* /img/geometry2.png
+  * simple background image
