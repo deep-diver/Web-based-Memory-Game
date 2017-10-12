@@ -33,10 +33,12 @@ GameState.prototype.increaseMove = function() {
     $('.moves').text(this.trialCount);
     
     if (this.trialCount == FIRST_STAR_THRESHOLD) {
-        $('.fa-star:eq( 0 )').addClass('fa-star-o');
+        $('.score-panel .stars-container .fa-star:eq( 0 )').addClass('fa-star-o');
+        $('.modal-body .stars-container .fa-star:eq( 0 )').addClass('fa-star-o');
     }
     else if (this.trialCount == SECOND_STAR_THRESHOLD) {
-        $('.fa-star:eq( 1 )').addClass('fa-star-o');
+        $('.score-panel .stars-container .fa-star:eq( 1 )').addClass('fa-star-o');
+        $('.modal-body .stars-container .fa-star:eq( 1 )').addClass('fa-star-o');
     }
 }
 /* GameState Class Scope Ends */

@@ -96,7 +96,7 @@ h1 {
     display: inline-block;
 }
 
-.score-panel .stars-container .stars {
+.stars-container .stars {
     width: 33%;
     margin: 0;
     padding: 0;
@@ -104,7 +104,7 @@ h1 {
     margin: 0 5px 0 0;
 }
 
-.score-panel .stars-container .stars li {
+.stars-container .stars li {
     list-style: none;
     display: inline-block;
 }
