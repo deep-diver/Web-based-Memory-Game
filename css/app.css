@@ -108,19 +108,17 @@ h1 {
     cursor: pointer;
 }
 
-/* modal */
+/* modal style from https://www.w3schools.com/howto/howto_css_modals.asp */
 
 .modal-header {
     padding: 2px 16px;
 }
 
-/* Modal Body */
 .modal-body {
     padding: 2px 16px;
     background-color: #5cb85c;
 }
 
-/* Modal Footer */
 .modal-footer {
     padding: 2px 16px;
 }
@@ -130,6 +128,8 @@ h1 {
     height: 50px;
     font-size: 1.5em;
     font-weight: bold;
+
+    background-color: #5cb85c;
 }
 
 .modal {
