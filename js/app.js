@@ -69,7 +69,8 @@ $(function() {
 });
 
 /*
-    init() function to initialize everything including UI.
+    @description initialize everything including UI.
+    @total initializer
 */
 function init() {
     // obtain current list of cards, and shuffle them
@@ -111,7 +112,11 @@ function init() {
     }, 1000);
 }
 
-// when a card is clicked.
+/*
+    @description - when cards are selected, this function figures out weather they are a match.
+    @click event callback function for cards
+    @param {object} event - The event object
+*/
 function whenCardClicked(event) {
     // disable the currently interacting card to be clicked.
     $(this).unbind("click", whenCardClicked);
@@ -158,7 +163,12 @@ function whenCardClicked(event) {
     }, 1000);
 }
 
-// this is triggered when two cards are matched.
+/*
+    @description - triggered when two cards are matched. when there is no more match to find, this functions pops up a modal dialogue.
+    @twoCardsMatched
+    @param {object} firstCard - the card users have selected at first
+    @param {object} secondCard - the card users have selected at second
+*/
 function twoCardsMatched(firstCard, secondCard) {
     // increase the number of correct match
     gameState.successCount += 1;
@@ -179,7 +189,13 @@ function twoCardsMatched(firstCard, secondCard) {
     }
 }
 
-// Shuffle function from http://stackoverflow.com/a/2450976
+/*
+    Shuffle function from http://stackoverflow.com/a/2450976
+    
+    @description - shuffle existing array and return a new suffled array instance
+    @shuffle
+    @param {object} array - array to be shuffled
+*/
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
 
