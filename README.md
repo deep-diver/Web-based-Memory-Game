@@ -8,7 +8,7 @@
 * Resources
 
 ## Overview
-<img src="/capture1.png" width="400" height="400"> <img src="/capture2.png" width="130" height="400">
+<img src="/capture1.png" width="400" height="400"> <img src="/capture2.png" width="300" height="400">
 
 * This project is a part of Udacity's FEWD(Front End Web Developer) Nanodegree pgrogram's assignment. The purpose of this project is to enhance writing javascript code ability such as building entire program logic, pseudoclass creation, manipulating DOM with jQuery, getting familiar with javascript syntax/object/function, and so on.
 
