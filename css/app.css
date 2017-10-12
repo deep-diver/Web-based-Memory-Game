@@ -21,6 +21,11 @@ body {
     font-family: 'Coda', cursive;
 }
 
+header {
+    width: 100%;
+    text-align: center;
+}
+
 .container {
     display: flex;
     justify-content: center;
@@ -181,4 +186,46 @@ h1 {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+
+@media screen and (max-width: 660px) {
+    .score-panel {
+        width: 100%;
+    }
+    
+    .score-panel .stars-container, 
+    .score-panel .timer,
+    .score-panel .restart {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .stars-container .stars {
+        width: auto;
+    }
+
+    .deck {
+        width: 320px;
+        min-height: 350px;
+        padding: 10px;
+    }
+
+    .deck .card {
+        width: 70px;
+        height: 70px;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+
+    .modal-footer button {
+        font-size: 10pt;
+    }
+
+    .close {
+        font-size: 20px;
+    }
 }
