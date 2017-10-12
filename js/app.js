@@ -3,9 +3,7 @@ let SECOND_STAR_THRESHOLD = 10;
 let MAX_MATCHING = 8;
 
 var GameState = function(maxMatching) {
-    this.successCount = 0;
-    this.trialCount = 0;
-    this.selectedCards = [];
+    this.init();
 }
 
 GameState.prototype.increaseMove = function() {
@@ -13,11 +11,23 @@ GameState.prototype.increaseMove = function() {
     $('.moves').text(this.trialCount);
     
     if (this.trialCount == FIRST_STAR_THRESHOLD) {
-        $('.fa-star:nth-child(0)').addClass('fa-star-o');
+        $('.fa-star:eq( 0 )').addClass('fa-star-o');
     }
     else if (this.trialCount == SECOND_STAR_THRESHOLD) {
-        $('.fa-star:nth-child(1)').addClass('fa-star-o');
+        $('.fa-star:eq( 1 )').addClass('fa-star-o');
     }
+}
+
+GameState.prototype.init = function() {
+    this.successCount = 0;
+    this.trialCount = 0;
+    this.selectedCards = [];
+    this.timeCount = 0;
+
+    clearInterval(this.timeInterval);
+    this.timeInterval = setInterval(function() {
+        this.timeCount += 1;
+    }, 1000);
 }
 
 var gameState = new GameState(8);
@@ -86,23 +96,29 @@ function whenCardClicked(event) {
     
             const firstCardSymbol = firstCard.attr('class').split(" ")[1];
             const secondCardSymbol = secondCard.attr('class').split(" ")[1];
-            // alert('first: ' + $(firstCard).attr('class').split(" ")[1] + ', second: ' + $(secondCard).attr('class').split(" ")[1]);
-    
+
             firstCard.parent().removeClass("open show");
             secondCard.parent().removeClass("open show");
     
             if (firstCardSymbol === secondCardSymbol) { 
-                firstCard.parent().addClass("match");
-                secondCard.parent().addClass("match");
-
-                if (gameState.successCount == MAX_MATCHING) {
-                    alert("Congratulation!!");
-                }
+                twoCardsMatched(firstCard, secondCard);
             }
             
             $('.card').click(whenCardClicked);
         }
     }, 1000);
+}
+
+function twoCardsMatched(firstCard, secondCard) {
+    gameState.successCount += 1;
+    
+    firstCard.parent().addClass("match");
+    secondCard.parent().addClass("match");
+
+    if (gameState.successCount == MAX_MATCHING) {
+        $(".modal").css('display', 'block');
+        $(".modal-body").text("Congratulation!! Your score is " + gameState.trialCount);
+    }
 }
 
 
