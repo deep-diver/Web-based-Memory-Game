@@ -2,19 +2,25 @@
 
 ## Table of Contents
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+* Overview
+* Functions
 
-## Instructions
+## Overview
+![Program Capture](/capture.png)
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+* This project is a part of Udacity's FEWD(Front End Web Developer) Nanodegree pgrogram's assignment. The purpose of this project is to enhance writing javascript code ability such as building entire program logic, pseudoclass creation, manipulating DOM with jQuery, getting familiar with javascript syntax/object/function, and so on.
 
-To get started, open `js/app.js` and start building out the app's functionality
+* This project is "Memory Game". When a card is clicked, it shows what symbol's in it. Users should select two cards by guessing their location. Memory Game can be completed when finding all pairs of the same symbols. 
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+## Functions
 
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+* Shuffling Cards
+  * when restart button is clicked, all cards are shuffled. 
+* Counting
+  * record how many moves users has made
+  * after 10 moves, one star will be lost
+  * after 20 moves, another star will be lost (the worst score range)
+  * record how many seconds users has played
+* After finished..
+  * a modal dialogue pops up to ask if users want to play again
+  * the modal gives score information 
